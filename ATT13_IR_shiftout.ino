@@ -106,8 +106,6 @@ void loop() {
       if (send) send_data(data);
 		} 
 
-  
-
   #ifdef USE_LED1
     if (timer == 0) {
        PORTB &= ~(1 << LED_PIN); // LED OFF        

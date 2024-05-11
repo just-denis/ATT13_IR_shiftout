@@ -34,7 +34,6 @@
 //void IR_init(void);
 //int8_t IR_read(uint8_t *address, uint8_t *command);
 
-
 volatile uint16_t IR_timeout = 0;
 volatile uint16_t IR_counter = 0;
 volatile uint32_t IR_rawdata = 0;
