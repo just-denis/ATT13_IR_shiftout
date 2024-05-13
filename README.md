@@ -15,5 +15,5 @@ The read / write subroutines were copied from the ATtiny13A datasheet, no change
 For convenience, they are put in a separate file - "eeprom_rw.h".
 
 ## Compilation size
-Sketch uses 1002 bytes (97%) of program storage space. Maximum is 1024 bytes.
+Sketch uses 994 bytes (97%) of program storage space. Maximum is 1024 bytes. 
 Global variables use 18 bytes (28%) of dynamic memory, leaving 46 bytes for local variables. Maximum is 64 bytes.

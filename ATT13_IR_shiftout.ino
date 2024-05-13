@@ -26,10 +26,9 @@ uint8_t data = 0;
 #ifdef USE_EEPROM
   #include "eeprom_rw.h"
   #define EEPROM_ADDRESS 0
-  void send_data(bool write_to_eeprom = true);
-#else
-  void send_data();
 #endif //USE_EEPROM
+
+void send_data();
 
 int main() {
   // setup
@@ -47,10 +46,9 @@ int main() {
 
   #ifdef USE_EEPROM
     data = EEPROM_read(EEPROM_ADDRESS);
-    send_data(false);
-  #else
-    send_data();
   #endif
+
+  send_data();
 
   // loop
   //====================
@@ -104,29 +102,26 @@ int main() {
           break;
       }      
 
-      if (send) send_data();
+      if (send) {
+        #ifdef USE_EEPROM
+          EEPROM_write(EEPROM_ADDRESS, data);
+        #endif
+        send_data();
+      }
 		}
   } //~loop
 
   return 0;
 } //~main
 
-#ifdef USE_EEPROM
-void send_data(bool write_to_eeprom) 
-#else 
 void send_data()
-#endif
 {
-  #ifdef USE_EEPROM
-    if (write_to_eeprom) EEPROM_write(EEPROM_ADDRESS, data);
-  #endif
-
   //устанавливаем LOW на latchPin пока не окончена передача байта
   digitalWrite(LATCH_PIN, LOW);
   shiftOut(DATA_PIN, CLOCK_PIN, LSBFIRST, data);  
   //устанавливаем HIGH на latchPin, чтобы проинформировать регистр, что передача окончена.
   digitalWrite(LATCH_PIN, HIGH);
-}
+} //~send_data
 
 #ifdef USE_LED
 void blink() {
@@ -139,7 +134,7 @@ void blink() {
   PORTB&=~(1<<LED_PIN); //отключаем
   //PORTB ^= (1 << LED_PIN);
   _delay_ms(BLINK_STEP_MS);
-}
+} //~blink
 #endif
 
 
