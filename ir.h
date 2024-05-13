@@ -1,7 +1,13 @@
 /**
  * Copyright (c) 2016, Łukasz Marcin Podkalicki <lpodkalicki@gmail.com>
- * IR Remote for ATtiny13
+ * ATtiny13/013
+ * NEC proto analyzer. Example of monblocking IR signal reader (38kHz, TSOPxxx) and NEC protocol decoder.
+ * Settings:
+ *  FUSE_L=0x7A
+ *  FUSE_H=0xFF
+ *  F_CPU=9600000
  https://github.com/lpodkalicki/blog/tree/master/avr/attiny13/013_ir_receiver_38khz_nec_proto_analyzer
+ https://blog.podkalicki.pl/attiny13-ir-receiver-nec-proto-analyzer/
  */
 
 #pragma once
