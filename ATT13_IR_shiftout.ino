@@ -6,16 +6,16 @@ More in-line comments to be added...
 #include "ir.h" // IR_IN_PIN = PB1
 
 // https://docs.arduino.cc/tutorials/communication/guide-to-shift-out/
-uint8_t const LATCH_PIN = PB3;
-uint8_t const CLOCK_PIN = PB2;
-uint8_t const DATA_PIN = PB0;
+uint8_t const LATCH_PIN = PB3;  // 595:  PIN 12	ST_CP	Storage register clock pin (latch pin)
+uint8_t const CLOCK_PIN = PB2;  // 595:  PIN 11	SH_CP	Shift register clock pin
+uint8_t const DATA_PIN = PB4;   // 595:  PIN 14	DS	Serial data input
 
 uint8_t data = 0;
 
 #define USE_LED
 
 #ifdef USE_LED
-  #define LED_PIN PB4
+  #define LED_PIN PB0
   #define BLINK_STEP_MS 50
 #else
   #define blink() // a 'dumb' stub in case we don't use led
